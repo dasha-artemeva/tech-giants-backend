@@ -1,0 +1,28 @@
+[
+  {
+    "model": "members.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$870000$GLAK0uVqegJvTmsWRALXHY$7kPFJr3B4kliO1vYLmG4BZGxm9Be+rtzkRYUPYfn/Co=",
+      "last_login": "2024-09-25T20:19:47.540Z",
+      "is_superuser": true,
+      "username": "admin",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-09-25T20:18:23.273Z",
+      "email": "svetovoyvv@yandex.ru",
+      "first_name": "Владислав",
+      "last_name": "Световой",
+      "middle_name": "Вячеславович",
+      "phone_number": "+79081810600",
+      "birth_date": "2004-12-08",
+      "is_filled_by_user": true,
+      "groups": [
+        1,
+        2,
+        3
+      ],
+      "user_permissions": []
+    }
+  }
+]

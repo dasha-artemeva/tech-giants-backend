@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="dark">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'css/bundle.css' %}?{% now 'U' %}">
+        {% block styles %}{% endblock %}
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+        {% include 'components/header.html' %}
+        {% block content %}{% endblock %}
+        {% include 'components/footer.html' %}
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"
+        ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+        <script src="{% static 'js/settings.js' %}?{% now 'U' %}"></script>
+        <script src="{% static 'js/header.js' %}?{% now 'U' %}"></script>
+        {% block script %}{% endblock %}
+    </body>
+</html>
+
+
+
+
