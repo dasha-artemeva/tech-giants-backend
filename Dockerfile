@@ -17,13 +17,10 @@ RUN set -ex \
     make \
     curl \
     wget \
-    build-essential \
     python-dev \
     libpcre3-dev \
     libpq-dev \
-    postgresql-client \
-    libmagic1 \
-    ffmpeg" \
+    postgresql-client" \
     && seq 1 8 | xargs -I{} mkdir -p /usr/share/man/man{} \
     && apt-get update && apt-get install -y --no-install-recommends $BUILD_DEPS \
     && apt-get clean \
@@ -37,6 +34,6 @@ WORKDIR /opt/app
 
 RUN poetry install --only main --no-interaction --no-root
 
-COPY ./src /opt/app/python
-COPY ./bin/docker_entrypoint.sh /bin/docker_entrypoint.sh
+COPY ./src /opt/app/
+COPY ./bin/docker-entrypoint.sh /bin/docker_entrypoint.sh
 ENTRYPOINT /bin/docker_entrypoint.sh
