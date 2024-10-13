@@ -8,18 +8,21 @@ from rest_framework.response import Response
 from applications.api.serializers import ActiveConferenceSerializer
 from constance import config
 
+
 @extend_schema(
     request=None,
     responses={
         status.HTTP_200_OK: ActiveConferenceSerializer,
     },
-    tags=['Конференция']
+    tags=["Конференция"],
 )
-@api_view(['GET'])
+@api_view(["GET"])
 @permission_classes([])
 def active_conference(request: Request) -> Response:
     data = {
-        name: getattr(config, f'{settings.ACTIVE_CONFERENCE_CONSTANCE_PREFIX}{name.upper()}')
+        name: getattr(
+            config, f"{settings.ACTIVE_CONFERENCE_CONSTANCE_PREFIX}{name.upper()}"
+        )
         for name in ActiveConferenceSerializer().fields.keys()
     }
     return Response(

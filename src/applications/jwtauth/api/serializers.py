@@ -10,17 +10,15 @@ class LoginUserSerializer(serializers.Serializer):
     password = serializers.CharField()
 
     def validate(self, attrs):
-        if any(key not in attrs for key in ["username", "email"]):
+        if all(key not in attrs or not attrs[key] for key in ["username", "email"]):
+            msg = 'Введите поле "username" или "email"'
             raise serializers.ValidationError(
-                'Введите поле "username" или "email"'
+                {
+                    "username": [msg],
+                    "email": [msg],
+                }
             )
         return attrs
-
-
-
-class TokenSerializer(serializers.Serializer):
-    token = serializers.CharField()
-    user = RetrieveUserSerializer(read_only=True)
 
 
 class RegisterUserSerializer(serializers.Serializer):

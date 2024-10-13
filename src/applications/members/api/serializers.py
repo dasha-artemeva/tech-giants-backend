@@ -1,3 +1,4 @@
+from drf_spectacular.utils import extend_schema_field
 from rest_framework import serializers
 
 from applications.members.enums import ParticipationRequestState
@@ -16,6 +17,12 @@ class RetrieveUserSerializer(serializers.Serializer):
     birth_date = serializers.DateField()
 
     is_filled_by_user = serializers.BooleanField()
+
+    permissions = serializers.SerializerMethodField()
+
+    @extend_schema_field(serializers.ListField(child=serializers.CharField()))
+    def get_permissions(self, obj: User):
+        return [str(permission) for permission in obj.get_all_permissions()]
 
 
 class RetrieveShortUserSerializer(serializers.Serializer):

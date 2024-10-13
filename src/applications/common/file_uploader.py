@@ -7,13 +7,13 @@ import secrets
 
 
 def upload_file(instance: models.Model, filename: str) -> pathlib.Path:
-    filename = pathlib.Path(filename)
+    _ = pathlib.Path
+    filename = _(filename)
     vector = secrets.token_hex(16)
     filename = (
         hashlib.sha256(
             f"{vector}:{filename.name}".encode(),
         ).hexdigest()
-        + "."
         + filename.suffix
     )
-    return settings.MEDIA_ROOT / "uploads" / instance.__class__.__name__ / filename
+    return _(instance.__class__.__name__) / _(filename)

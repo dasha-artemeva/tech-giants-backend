@@ -1,5 +1,6 @@
 from django.contrib import admin, messages
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from django.contrib.auth.models import Group
 
 from applications.members.exceptions import AssignToNotModeratorException
 from applications.members.models import User, Notification, ParticipationRequest

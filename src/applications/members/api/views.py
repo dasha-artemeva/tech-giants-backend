@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
 from applications.common.permissions import require_permission
+from applications.members.api.filters import ParticipationRequestFilterSet
 from applications.members.api.serializers import (
     RetrieveUserSerializer,
     RetrieveParticipationRequestSerializer,
@@ -59,7 +60,8 @@ class ParticipationRequestViewSet(
     GenericViewSet,
 ):
     serializer_class = RetrieveParticipationRequestSerializer
-    queryset = ParticipationRequest.objects.all()
+    queryset = ParticipationRequest.objects.all().order_by("-created_at")
+    filterset_class = ParticipationRequestFilterSet
 
     def get_queryset(self):
         if not self.request.user.has_perm(ParticipationRequest.permissions.MODERATOR):

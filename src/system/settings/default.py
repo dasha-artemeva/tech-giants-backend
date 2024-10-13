@@ -36,7 +36,6 @@ THIRD_PARTY_APPS = [
 INTERNAL_APPS = [
     "applications.members",
     "applications.jwtauth",
-    'applications.ui',
 ]
 
 INSTALLED_APPS = CORE_APPS + THIRD_PARTY_APPS + INTERNAL_APPS
@@ -66,12 +65,12 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                'constance.context_processors.config',
+                "constance.context_processors.config",
             ],
             "loaders": [
                 "django.template.loaders.filesystem.Loader",
                 "django.template.loaders.app_directories.Loader",
-            ]
+            ],
         },
     }
 ]
@@ -108,7 +107,7 @@ LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "Europe/Moscow"
 
-LANGUAGE_CODE = 'ru-RU'
+LANGUAGE_CODE = "ru-RU"
 USE_I18N = True
 
 USE_TZ = True
@@ -129,6 +128,7 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "applications.jwtauth.authentication.CustomAuthentication",
     ),
+    "DEFAULT_FILTER_BACKENDS": ("django_filters.rest_framework.DjangoFilterBackend",),
 }
 APPEND_SLASH = False
 SIMPLE_JWT = {
@@ -140,7 +140,7 @@ SIMPLE_JWT = {
     "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
     "USER_ID_FIELD": "id",
     "USER_ID_CLAIM": "user_id",
-    'AUTH_COOKIE': 'token',
+    "AUTH_COOKIE": "token",
 }
 
 SPECTACULAR_SETTINGS = {
@@ -182,7 +182,7 @@ CONSTANCE_BACKEND = "constance.backends.database.DatabaseBackend"
 
 ACTIVE_CONFERENCE = OrderedDict(
     [
-        ("GRADE", ('Всероссийская', 'Уровень конференции')),
+        ("GRADE", ("Всероссийская", "Уровень конференции")),
         ("SHORT_NAME", ("Конференция по ИБ", "Короткое название конференции")),
         ("START_DATE", (date(2022, 11, 1), "Дата начала конференции", date)),
         ("DURATION", ("2 часа", "Продолжительность конференции")),
@@ -219,6 +219,5 @@ CONSTANCE_CONFIG_FIELDSETS = OrderedDict(
     ]
 )
 
-STATICFILES_DIRS = [
-    BASE_DIR / 'applications' / 'ui' / 'static',
-]
+MEDIA_ROOT = BASE_DIR / "uploads"
+MEDIA_URL = "/uploads/"

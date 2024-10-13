@@ -4,10 +4,9 @@ from applications.common.exceptions import BaseServiceException
 from applications.members.models import User
 
 
-def login_user(*,
-               password: str,
-               email: str | None = None,
-               username: str | None = None) -> tuple[User, AccessToken]:
+def login_user(
+    *, password: str, email: str | None = None, username: str | None = None
+) -> tuple[User, AccessToken]:
     user = None
     if email:
         user = User.objects.filter(email=email).first()

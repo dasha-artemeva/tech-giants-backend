@@ -1,26 +1,41 @@
 [
-  {
+{
     "model": "auth.group",
     "pk": 1,
     "fields": {
-      "name": "Администраторы",
-      "permissions": []
+        "name": "Администраторы",
+        "permissions": []
     }
-  },
-  {
+},
+{
     "model": "auth.group",
     "pk": 2,
     "fields": {
-      "name": "Модераторы",
-      "permissions": []
+        "name": "Модераторы",
+        "permissions": [
+            35,
+            36,
+            37,
+            39,
+            38,
+            27,
+            28,
+            29,
+            30
+        ]
     }
-  },
-  {
+},
+{
     "model": "auth.group",
     "pk": 3,
     "fields": {
-      "name": "Пользователи",
-      "permissions": []
+        "name": "Пользователи",
+        "permissions": [
+            35,
+            36,
+            38,
+            30
+        ]
     }
-  }
+}
 ]

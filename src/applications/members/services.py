@@ -1,5 +1,6 @@
 import datetime
 
+from django.contrib.auth.models import Group
 from django.core.files import File
 from django.db.models import Q
 
@@ -20,6 +21,7 @@ def create_user(username: str, email: str, password: str) -> User:
         user = User.objects.create_user(
             username=username, email=email, password=password
         )
+        user.groups.add(Group.objects.get(name="Пользователи"))
     except ValueError as e:
         raise BaseServiceException("Ошибка регистрации пользователя") from e
     return user
