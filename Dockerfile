@@ -36,4 +36,5 @@ RUN poetry install --only main --no-interaction --no-root
 
 COPY ./src /opt/app/
 COPY ./bin/docker-entrypoint.sh /bin/docker_entrypoint.sh
+RUN chmod +x /bin/docker_entrypoint.sh
 ENTRYPOINT /bin/docker_entrypoint.sh
