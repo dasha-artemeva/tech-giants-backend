@@ -103,7 +103,7 @@ class ParticipationRequestViewSet(
         },
         tags=PARTICIPATION_REQUEST_TAGS,
     )
-    @require_permission("members.create_participationrequest")
+    @require_permission("members.add_participationrequest")
     def create(self, request: Request, *args, **kwargs):
         """
         Создание заявки на участие в конференции
